@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Informe Evento Inversiones — Marval</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --marval-dark: #0D1B2A;
+    --marval-navy: #1B2E45;
+    --marval-gold: #C9A84C;
+    --marval-gold-light: #E8C97A;
+    --marval-teal: #2ABFBF;
+    --marval-teal-light: #7EE0E0;
+    --marval-white: #F5F0E8;
+    --marval-gray: #8A9BB0;
+    --accent-orange: #E07B3A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--marval-dark);
+    font-family: 'DM Sans', sans-serif;
+    color: var(--marval-white);
+    width: 900px;
+    margin: 0 auto;
+  }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, #0D1B2A 0%, #1B3A5C 60%, #0D2E3E 100%);
+    padding: 50px 60px 40px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 3px solid var(--marval-gold);
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 350px; height: 350px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.15) 0%, transparent 70%);
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 40%;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(42,191,191,0.1) 0%, transparent 70%);
+  }
+
+  .header-tag {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--marval-gold);
+    margin-bottom: 12px;
+  }
+
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--marval-white);
+    margin-bottom: 8px;
+  }
+
+  .header h1 span {
+    color: var(--marval-gold);
+  }
+
+  .header-sub {
+    font-size: 15px;
+    color: var(--marval-gray);
+    font-weight: 300;
+    margin-top: 10px;
+  }
+
+  .header-badge {
+    position: absolute;
+    top: 40px; right: 60px;
+    background: var(--marval-gold);
+    color: var(--marval-dark);
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 8px 18px;
+    letter-spacing: 1px;
+  }
+
+  /* SECTION LABELS */
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--marval-gold);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--marval-gold), transparent);
+  }
+
+  /* KPI ROW */
+  .kpi-section {
+    background: var(--marval-navy);
+    padding: 40px 60px;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+  }
+
+  .kpi-card {
+    text-align: center;
+    padding: 24px 10px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-top: 3px solid var(--marval-gold);
+    position: relative;
+  }
+
+  .kpi-card.highlight {
+    border-top-color: var(--marval-teal);
+    background: rgba(42,191,191,0.06);
+  }
+
+  .kpi-card.highlight2 {
+    border-top-color: var(--accent-orange);
+    background: rgba(224,123,58,0.06);
+  }
+
+  .kpi-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+    font-weight: 900;
+    color: var(--marval-gold);
+    line-height: 1;
+  }
+
+  .kpi-card.highlight .kpi-number { color: var(--marval-teal); }
+  .kpi-card.highlight2 .kpi-number { color: var(--accent-orange); }
+
+  .kpi-label {
+    font-size: 11px;
+    color: var(--marval-gray);
+    margin-top: 8px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .kpi-sub {
+    font-size: 10px;
+    color: rgba(138,155,176,0.6);
+    margin-top: 4px;
+  }
+
+  /* CANALES */
+  .canales-section {
+    padding: 40px 60px;
+    background: var(--marval-dark);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .canales-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .canal-card {
+    background: var(--marval-navy);
+    padding: 28px 30px;
+    border-left: 4px solid var(--marval-teal);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .canal-card.secondary { border-left-color: var(--marval-gray); }
+
+  .canal-card::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 100px; height: 100%;
+    background: linear-gradient(to left, rgba(42,191,191,0.04), transparent);
+  }
+
+  .canal-name {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--marval-teal);
+    margin-bottom: 12px;
+  }
+
+  .canal-card.secondary .canal-name { color: var(--marval-gray); }
+
+  .canal-stat-row {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .canal-stat {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .canal-stat-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--marval-white);
+  }
+
+  .canal-stat-label {
+    font-size: 10px;
+    color: var(--marval-gray);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .canal-badge {
+    display: inline-block;
+    background: rgba(42,191,191,0.15);
+    color: var(--marval-teal);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 12px;
+    margin-top: 12px;
+    border: 1px solid rgba(42,191,191,0.3);
+  }
+
+  .insight-box {
+    margin-top: 16px;
+    background: rgba(201,168,76,0.08);
+    border-left: 3px solid var(--marval-gold);
+    padding: 12px 16px;
+    font-size: 12px;
+    color: var(--marval-gold-light);
+    line-height: 1.5;
+  }
+
+  /* USUARIOS NUEVOS VS VIEJOS */
+  .usuarios-section {
+    padding: 40px 60px;
+    background: var(--marval-navy);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .usuarios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .usuario-card {
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .usuario-card.nuevo {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .usuario-card.viejo {
+    background: linear-gradient(135deg, rgba(201,168,76,0.12), rgba(201,168,76,0.04));
+    border: 1px solid rgba(201,168,76,0.3);
+  }
+
+  .usuario-tipo {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .usuario-card.nuevo .usuario-tipo { color: var(--marval-gray); }
+  .usuario-card.viejo .usuario-tipo { color: var(--marval-gold); }
+
+  .usuario-big {
+    font-family: 'Playfair Display', serif;
+    font-size: 56px;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .usuario-card.nuevo .usuario-big { color: var(--marval-white); }
+  .usuario-card.viejo .usuario-big { color: var(--marval-gold); }
+
+  .usuario-desc { font-size: 13px; color: var(--marval-gray); margin-bottom: 16px; }
+
+  .usuario-stats { display: flex; gap: 20px; }
+
+  .u-stat-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  .usuario-card.nuevo .u-stat-val { color: var(--marval-teal); }
+  .usuario-card.viejo .u-stat-val { color: var(--marval-gold); }
+
+  .u-stat-label { font-size: 10px; color: var(--marval-gray); text-transform: uppercase; letter-spacing: 0.5px; }
+
+  /* PERFIL */
+  .perfil-section {
+    padding: 40px 60px;
+    background: var(--marval-dark);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .perfil-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .perfil-card {
+    background: var(--marval-navy);
+    padding: 20px;
+    border-bottom: 2px solid rgba(201,168,76,0.2);
+  }
+
+  .perfil-card-title {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--marval-gold);
+    margin-bottom: 14px;
+  }
+
+  .perfil-bar-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .perfil-bar-label {
+    font-size: 11px;
+    color: var(--marval-gray);
+    width: 85px;
+    flex-shrink: 0;
+  }
+
+  .perfil-bar-track {
+    flex: 1;
+    height: 6px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 0;
+  }
+
+  .perfil-bar-fill {
+    height: 100%;
+    background: var(--marval-teal);
+  }
+
+  .perfil-bar-fill.gold { background: var(--marval-gold); }
+  .perfil-bar-fill.orange { background: var(--accent-orange); }
+
+  .perfil-bar-val {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--marval-white);
+    width: 28px;
+    text-align: right;
+  }
+
+  .perfil-donut-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .perfil-dot-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--marval-gray);
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .dot.teal { background: var(--marval-teal); }
+  .dot.gold { background: var(--marval-gold); }
+  .dot.orange { background: var(--accent-orange); }
+  .dot.gray { background: var(--marval-gray); }
+  .dot.navy { background: #4A7FA5; }
+
+  .big-pct {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--marval-teal);
+    margin: 6px 0 2px;
+  }
+
+  .big-pct-label { font-size: 11px; color: var(--marval-gray); }
+
+  /* COMPRADORES EVENTO */
+  .compradores-section {
+    padding: 40px 60px;
+    background: var(--marval-navy);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .compradores-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .comprador-card {
+    background: linear-gradient(135deg, rgba(201,168,76,0.1), rgba(201,168,76,0.03));
+    border: 1px solid rgba(201,168,76,0.25);
+    padding: 28px;
+  }
+
+  .comprador-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--marval-gold);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .comprador-num::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background: var(--marval-gold);
+    color: var(--marval-dark);
+    border-radius: 50%;
+  }
+
+  .comprador-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .comprador-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .comprador-key {
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--marval-gray);
+    width: 80px;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+
+  .comprador-val {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--marval-white);
+  }
+
+  /* OPORTUNIDADES ABIERTAS */
+  .opps-section {
+    padding: 40px 60px;
+    background: var(--marval-dark);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .opps-highlight {
+    background: rgba(42,191,191,0.06);
+    border: 1px solid rgba(42,191,191,0.2);
+    padding: 20px 24px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .opps-big {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    font-weight: 900;
+    color: var(--marval-teal);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .opps-desc {
+    font-size: 13px;
+    color: var(--marval-gray);
+    line-height: 1.6;
+  }
+
+  .opps-desc strong { color: var(--marval-white); }
+
+  .opps-perfil-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+
+  .opp-mini {
+    background: var(--marval-navy);
+    padding: 16px;
+    text-align: center;
+    border-top: 2px solid var(--marval-teal);
+  }
+
+  .opp-mini-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--marval-teal);
+  }
+
+  .opp-mini-label { font-size: 10px; color: var(--marval-gray); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+
+  /* INSIGHTS */
+  .insights-section {
+    padding: 40px 60px;
+    background: linear-gradient(135deg, #0D1B2A, #1B3A5C);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .insights-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .insight-card {
+    background: rgba(255,255,255,0.04);
+    border-left: 3px solid var(--marval-gold);
+    padding: 20px 22px;
+  }
+
+  .insight-card.teal { border-left-color: var(--marval-teal); }
+  .insight-card.orange { border-left-color: var(--accent-orange); }
+
+  .insight-icon {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  .insight-title {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--marval-gold);
+    margin-bottom: 8px;
+  }
+
+  .insight-card.teal .insight-title { color: var(--marval-teal); }
+  .insight-card.orange .insight-title { color: var(--accent-orange); }
+
+  .insight-text {
+    font-size: 12px;
+    color: var(--marval-gray);
+    line-height: 1.6;
+  }
+
+  .insight-text strong { color: var(--marval-white); }
+
+  /* PROYECTOS */
+  .proyectos-section {
+    padding: 30px 60px;
+    background: var(--marval-navy);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .proyectos-row {
+    display: flex;
+    gap: 20px;
+    align-items: stretch;
+  }
+
+  .proyecto-card {
+    flex: 1;
+    background: var(--marval-dark);
+    padding: 20px 24px;
+    border-top: 3px solid var(--marval-gold);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .proyecto-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+  }
+
+  .proyecto-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--marval-white);
+  }
+
+  .proyecto-sub { font-size: 11px; color: var(--marval-gray); margin-top: 4px; }
+
+  .tipo-vis-row {
+    flex: 1;
+    display: flex;
+    gap: 12px;
+  }
+
+  .tipo-badge {
+    flex: 1;
+    padding: 16px 20px;
+    background: var(--marval-dark);
+    border-top: 3px solid var(--marval-teal);
+    text-align: center;
+  }
+
+  .tipo-badge.vis { border-top-color: var(--accent-orange); }
+
+  .tipo-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--marval-teal);
+  }
+
+  .tipo-badge.vis .tipo-val { color: var(--accent-orange); }
+
+  .tipo-label { font-size: 10px; color: var(--marval-gray); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
+  /* FOOTER */
+  .footer {
+    padding: 30px 60px;
+    background: var(--marval-dark);
+    border-top: 3px solid var(--marval-gold);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--marval-gold);
+    letter-spacing: 2px;
+  }
+
+  .footer-sub { font-size: 10px; color: var(--marval-gray); letter-spacing: 1px; margin-top: 2px; }
+
+  .footer-date { font-size: 11px; color: var(--marval-gray); text-align: right; }
+
+  /* DIVIDER */
+  .gold-divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--marval-gold), transparent);
+    margin: 20px 0;
+  }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+  /* BUYER PERSONA */
+  .buyer-section {
+    background: linear-gradient(135deg, #112233 0%, #1a3a2a 100%);
+    padding: 40px 60px;
+    border-bottom: 3px solid var(--marval-gold);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .buyer-section::before {
+    content: '';
+    position: absolute;
+    right: -60px; top: -60px;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    border: 40px solid rgba(201,168,76,0.06);
+  }
+
+  .buyer-intro {
+    font-size: 13px;
+    color: var(--marval-gray);
+    margin-bottom: 24px;
+    line-height: 1.6;
+    max-width: 600px;
+  }
+
+  .buyer-intro strong { color: var(--marval-gold); }
+
+  .buyer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+  }
+
+  .buyer-trait {
+    background: rgba(0,0,0,0.25);
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 16px 18px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .buyer-trait-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .buyer-trait-title {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--marval-gold);
+    margin-bottom: 4px;
+  }
+
+  .buyer-trait-val {
+    font-size: 13px;
+    color: var(--marval-white);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .buyer-trait-sub {
+    font-size: 10px;
+    color: var(--marval-gray);
+    margin-top: 2px;
+  }
+
+  .buyer-headline {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 22px;
+  }
+
+  .buyer-avatar {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--marval-gold), #8B6914);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px;
+    flex-shrink: 0;
+    border: 2px solid rgba(201,168,76,0.4);
+  }
+
+  .buyer-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--marval-white);
+  }
+
+  .buyer-tagline {
+    font-size: 12px;
+    color: var(--marval-teal);
+    margin-top: 2px;
+    font-weight: 500;
+  }
+
+  /* UTM TABLE */
+  .utm-section {
+    padding: 36px 60px;
+    background: var(--marval-dark);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .utm-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin-top: 4px;
+  }
+
+  .utm-table th {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--marval-gray);
+    padding: 8px 12px;
+    text-align: left;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .utm-table th:not(:first-child) { text-align: center; }
+
+  .utm-table td {
+    padding: 10px 12px;
+    color: var(--marval-gray);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .utm-table td:not(:first-child) { text-align: center; }
+
+  .utm-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+  .utm-source-name {
+    font-weight: 600;
+    color: var(--marval-white);
+    text-transform: capitalize;
+  }
+
+  .utm-highlight-row td {
+    background: rgba(201,168,76,0.06);
+    color: var(--marval-white);
+  }
+
+  .utm-venta-badge {
+    background: var(--marval-gold);
+    color: var(--marval-dark);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 2px;
+  }
+
+  .utm-teal { color: var(--marval-teal); font-weight: 600; }
+  .utm-gold { color: var(--marval-gold); font-weight: 600; }
+
+  .utm-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .utm-col-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--marval-teal);
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(42,191,191,0.2);
+  }
+
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-badge">MARVAL S.A.</div>
+  <div class="header-tag">Análisis de Resultados · Evento de Inversiones</div>
+  <h1>Radiografía<br>del <span>Evento</span></h1>
+  <p class="header-sub">Bucaramanga · 291 Leads captados · Proyectos Sky Tower & Cerros de Santa María</p>
+</div>
+
+<!-- BUYER PERSONA -->
+<div class="buyer-section">
+  <div class="section-label">Buyer Persona del Evento</div>
+  <div class="buyer-headline">
+    <div class="buyer-avatar">👨‍💼</div>
+    <div>
+      <div class="buyer-name">"El Profesional Inversor"</div>
+      <div class="buyer-tagline">Perfil sintetizado a partir de los compradores y oportunidades abiertas del evento</div>
+    </div>
+  </div>
+  <div class="buyer-intro">
+    El evento convocó principalmente a <strong>hombres profesionales de 30 a 50 años</strong>, empleados o independientes, con formación universitaria o posgrado, que viven en arriendo y buscan dar el salto a vivienda propia o hacer una inversión inmobiliaria. Se trata de un perfil con alta intención de compra cuando ya tiene historial con Marval, y que prefiere el contacto presencial o por WhatsApp.
+  </div>
+  <div class="buyer-grid">
+    <div class="buyer-trait">
+      <div class="buyer-trait-icon">🎂</div>
+      <div>
+        <div class="buyer-trait-title">Edad</div>
+        <div class="buyer-trait-val">30–50 años</div>
+        <div class="buyer-trait-sub">Pico en 30–40 · Rango activo hasta 70</div>
+      </div>
+    </div>
+    <div class="buyer-trait">
+      <div class="buyer-trait-icon">⚧</div>
+      <div>
+        <div class="buyer-trait-title">Género</div>
+        <div class="buyer-trait-val">63% Masculino</div>
+        <div class="buyer-trait-sub">37% Femenino · perfil mixto</div>
+      </div>
+    </div>
+    <div class="buyer-trait">
+      <div class="buyer-trait-icon">💍</div>
+      <div>
+        <div class="buyer-trait-title">Estado Civil</div>
+        <div class="buyer-trait-val">Soltero (60%)</div>
+        <div class="buyer-trait-sub">Casado (36%) · sin hijos en mayoría</div>
+      </div>
+    </div>
+    <div class="buyer-trait">
+      <div class="buyer-trait-icon">🎓</div>
+      <div>
+        <div class="buyer-trait-title">Formación</div>
+        <div class="buyer-trait-val">Profesional universitario</div>
+        <div class="buyer-trait-sub">80%+ con título o posgrado</div>
+      </div>
+    </div>
+    <div class="buyer-trait">
+      <div class="buyer-trait-icon">💼</div>
+      <div>
+        <div class="buyer-trait-title">Ocupación</div>
+        <div class="buyer-trait-val">Empleado o Independiente</div>
+        <div class="buyer-trait-sub">Docente, Adm. Empresas, Contador, Ing.</div>
+      </div>
+    </div>
+    <div class="buyer-trait">
+      <div class="buyer-trait-icon">💰</div>
+      <div>
+        <div class="buyer-trait-title">Ingresos</div>
+        <div class="buyer-trait-val">4–9 SMLV</div>
+        <div class="buyer-trait-sub">Capacidad para NVS con crédito hipotecario</div>
+      </div>
+    </div>
+    <div class="buyer-trait">
+      <div class="buyer-trait-icon">🏠</div>
+      <div>
+        <div class="buyer-trait-title">Vivienda Actual</div>
+        <div class="buyer-trait-val">En arriendo (47%)</div>
+        <div class="buyer-trait-sub">30% ya tiene propia → perfil inversor</div>
+      </div>
+    </div>
+    <div class="buyer-trait">
+      <div class="buyer-trait-icon">📱</div>
+      <div>
+        <div class="buyer-trait-title">Cómo contactarlo</div>
+        <div class="buyer-trait-val">Presencial + WhatsApp</div>
+        <div class="buyer-trait-sub">Llamada como canal de respaldo</div>
+      </div>
+    </div>
+    <div class="buyer-trait">
+      <div class="buyer-trait-icon">🌐</div>
+      <div>
+        <div class="buyer-trait-title">Cómo llegó</div>
+        <div class="buyer-trait-val">Mailing / Email digital</div>
+        <div class="buyer-trait-sub">Único sub-canal que generó ventas reales</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- KPIs PRINCIPALES -->
+<div class="kpi-section">
+  <div class="section-label">Resumen Ejecutivo</div>
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-number">291</div>
+      <div class="kpi-label">Leads Totales</div>
+      <div class="kpi-sub">Base de datos del evento</div>
+    </div>
+    <div class="kpi-card highlight">
+      <div class="kpi-number">85</div>
+      <div class="kpi-label">Oportunidades</div>
+      <div class="kpi-sub">29% de conversión</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-number">46</div>
+      <div class="kpi-label">Opp. Abiertas</div>
+      <div class="kpi-sub">Pipeline activo</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-number">37</div>
+      <div class="kpi-label">Opp. Perdidas</div>
+      <div class="kpi-sub">Cerradas sin venta</div>
+    </div>
+    <div class="kpi-card highlight2">
+      <div class="kpi-number">2</div>
+      <div class="kpi-label">Ventas</div>
+      <div class="kpi-sub">Concretadas a la fecha</div>
+    </div>
+  </div>
+</div>
+
+<!-- CANALES DE CAPTACIÓN -->
+<div class="canales-section">
+  <div class="section-label">Medios de Captación</div>
+  <div class="canales-grid">
+    <div class="canal-card">
+      <div class="canal-name">🌐 Página Web</div>
+      <div class="canal-stat-row">
+        <div class="canal-stat">
+          <span class="canal-stat-val">215</span>
+          <span class="canal-stat-label">Leads</span>
+        </div>
+        <div class="canal-stat">
+          <span class="canal-stat-val">79</span>
+          <span class="canal-stat-label">Oportunidades</span>
+        </div>
+        <div class="canal-stat">
+          <span class="canal-stat-val">2</span>
+          <span class="canal-stat-label">Ventas</span>
+        </div>
+      </div>
+      <div class="canal-badge">Tasa leads calificados: 20.93%</div>
+      <div class="insight-box">74% de los leads provienen de canales digitales. Las 2 ventas del evento se originaron aquí — señal de alcance nacional.</div>
+    </div>
+    <div class="canal-card secondary">
+      <div class="canal-name">📣 Initiative</div>
+      <div class="canal-stat-row">
+        <div class="canal-stat">
+          <span class="canal-stat-val">71</span>
+          <span class="canal-stat-label">Leads</span>
+        </div>
+        <div class="canal-stat">
+          <span class="canal-stat-val">4</span>
+          <span class="canal-stat-label">Oportunidades</span>
+        </div>
+        <div class="canal-stat">
+          <span class="canal-stat-val">0</span>
+          <span class="canal-stat-label">Ventas</span>
+        </div>
+      </div>
+      <div class="canal-badge" style="background:rgba(138,155,176,0.1);color:var(--marval-gray);border-color:rgba(138,155,176,0.3)">Tasa leads calificados: 5.63%</div>
+      <div class="insight-box" style="border-left-color:var(--marval-gray);color:var(--marval-gray)">Volumen significativo pero menor calidad de perfil. Oportunidad de optimizar segmentación en este canal.</div>
+    </div>
+  </div>
+</div>
+
+<!-- UTMs -->
+<div class="utm-section">
+  <div class="section-label">Detalle de Sub-Canales — Página Web (UTMs)</div>
+  <div class="utm-cols">
+    <div>
+      <div class="utm-col-title">Por Fuente (utm_source)</div>
+      <table class="utm-table">
+        <thead>
+          <tr>
+            <th>Fuente</th>
+            <th>Leads</th>
+            <th>Oport.</th>
+            <th>Cal. %</th>
+            <th>Ventas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="utm-highlight-row">
+            <td><span class="utm-source-name">Mailing</span></td>
+            <td class="utm-teal">69</td>
+            <td>37</td>
+            <td class="utm-gold">26.09%</td>
+            <td><span class="utm-venta-badge">2 ✓</span></td>
+          </tr>
+          <tr>
+            <td><span class="utm-source-name">Influencer</span></td>
+            <td class="utm-teal">70</td>
+            <td>13</td>
+            <td>18.57%</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td><span class="utm-source-name">RRSS</span></td>
+            <td class="utm-teal">24</td>
+            <td>8</td>
+            <td>16.67%</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td><span class="utm-source-name">Rentascortas</span></td>
+            <td class="utm-teal">5</td>
+            <td>2</td>
+            <td>20.00%</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td><span class="utm-source-name">Fenalco</span></td>
+            <td class="utm-teal">1</td>
+            <td>0</td>
+            <td>0%</td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <div class="utm-col-title">Por Medio (utm_medium)</div>
+      <table class="utm-table">
+        <thead>
+          <tr>
+            <th>Medio</th>
+            <th>Leads</th>
+            <th>Oport.</th>
+            <th>Cal. %</th>
+            <th>Ventas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="utm-highlight-row">
+            <td><span class="utm-source-name">Email</span></td>
+            <td class="utm-teal">49</td>
+            <td>29</td>
+            <td class="utm-gold">22.45%</td>
+            <td><span class="utm-venta-badge">2 ✓</span></td>
+          </tr>
+          <tr>
+            <td><span class="utm-source-name">NA / Organic</span></td>
+            <td class="utm-teal">67</td>
+            <td>13</td>
+            <td>~38%</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td><span class="utm-source-name">JD</span></td>
+            <td class="utm-teal">27</td>
+            <td>8</td>
+            <td>19.63%</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td><span class="utm-source-name">EmailComp</span></td>
+            <td class="utm-teal">20</td>
+            <td>8</td>
+            <td>15.00%</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td><span class="utm-source-name">Banner</span></td>
+            <td class="utm-teal">5</td>
+            <td>2</td>
+            <td>0%</td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="insight-box" style="margin-top:18px">
+    El <strong>Mailing vía Email</strong> fue el único sub-canal que generó ventas concretas — con 69 leads, 37 oportunidades y una tasa de calificación del 26%, la más alta entre todas las fuentes. El Influencer generó más volumen pero menor conversión. Para próximos lanzamientos: <strong>priorizar inversión en email marketing segmentado.</strong>
+  </div>
+</div>
+
+<!-- NUEVOS VS VIEJOS -->
+<div class="usuarios-section">
+  <div class="section-label">Comportamiento por Tipo de Cliente</div>
+  <div class="usuarios-grid">
+    <div class="usuario-card nuevo">
+      <div class="usuario-tipo">Cliente Nuevo</div>
+      <div class="usuario-big">88%</div>
+      <div class="usuario-desc">256 leads — primer contacto con Marval</div>
+      <div class="usuario-stats">
+        <div class="canal-stat">
+          <span class="u-stat-val">46</span>
+          <span class="u-stat-label">Oportunidades</span>
+        </div>
+        <div class="canal-stat">
+          <span class="u-stat-val">0</span>
+          <span class="u-stat-label">Ventas</span>
+        </div>
+        <div class="canal-stat">
+          <span class="u-stat-val">17.97%</span>
+          <span class="u-stat-label">Conv. Opp.</span>
+        </div>
+      </div>
+    </div>
+    <div class="usuario-card viejo">
+      <div class="usuario-tipo">⭐ Cliente con Historial</div>
+      <div class="usuario-big">12%</div>
+      <div class="usuario-desc">35 leads — ya habían tenido proceso comercial</div>
+      <div class="usuario-stats">
+        <div class="canal-stat">
+          <span class="u-stat-val">39</span>
+          <span class="u-stat-label">Oportunidades</span>
+        </div>
+        <div class="canal-stat">
+          <span class="u-stat-val">2</span>
+          <span class="u-stat-label">Ventas</span>
+        </div>
+        <div class="canal-stat">
+          <span class="u-stat-val">111%</span>
+          <span class="u-stat-label">Conv. Opp.</span>
+        </div>
+      </div>
+      <div class="insight-box" style="margin-top:16px">Solo el 12% de los leads, pero generaron el 100% de las ventas. Los clientes con historial Marval son el segmento más valioso.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PERFIL DE COMPRADORES -->
+<div class="perfil-section">
+  <div class="section-label">Perfil del Cliente con Oportunidad Abierta</div>
+  <div class="perfil-grid">
+
+    <div class="perfil-card">
+      <div class="perfil-card-title">📅 Edad</div>
+      <div class="perfil-bar-item">
+        <span class="perfil-bar-label">30–40 años</span>
+        <div class="perfil-bar-track"><div class="perfil-bar-fill gold" style="width:100%"></div></div>
+        <span class="perfil-bar-val">16</span>
+      </div>
+      <div class="perfil-bar-item">
+        <span class="perfil-bar-label">40–50 años</span>
+        <div class="perfil-bar-track"><div class="perfil-bar-fill gold" style="width:69%"></div></div>
+        <span class="perfil-bar-val">11</span>
+      </div>
+      <div class="perfil-bar-item">
+        <span class="perfil-bar-label">50–60 años</span>
+        <div class="perfil-bar-track"><div class="perfil-bar-fill gold" style="width:50%"></div></div>
+        <span class="perfil-bar-val">8</span>
+      </div>
+      <div class="perfil-bar-item">
+        <span class="perfil-bar-label">60–70 años</span>
+        <div class="perfil-bar-track"><div class="perfil-bar-fill gold" style="width:37%"></div></div>
+        <span class="perfil-bar-val">6</span>
+      </div>
+      <div class="perfil-bar-item">
+        <span class="perfil-bar-label">20–30 años</span>
+        <div class="perfil-bar-track"><div class="perfil-bar-fill gold" style="width:25%"></div></div>
+        <span class="perfil-bar-val">4</span>
+      </div>
+    </div>
+
+    <div class="perfil-card">
+      <div class="perfil-card-title">💼 Ocupación & Género</div>
+      <div class="big-pct">61%</div>
+      <div class="big-pct-label">Empleado · 27 personas</div>
+      <div class="gold-divider" style="margin:12px 0"></div>
+      <div class="perfil-donut-row" style="margin-bottom:10px">
+        <div class="perfil-dot-item"><span class="dot teal"></span>Empleado 61%</div>
+        <div class="perfil-dot-item"><span class="dot gold"></span>Independiente 31%</div>
+        <div class="perfil-dot-item"><span class="dot orange"></span>Pensionado 9%</div>
+      </div>
+      <div class="gold-divider" style="margin:12px 0"></div>
+      <div class="perfil-donut-row">
+        <div class="perfil-dot-item"><span class="dot navy"></span>Masculino 63%</div>
+        <div class="perfil-dot-item"><span class="dot teal"></span>Femenino 37%</div>
+      </div>
+    </div>
+
+    <div class="perfil-card">
+      <div class="perfil-card-title">🎓 Nivel Académico</div>
+      <div class="perfil-bar-item">
+        <span class="perfil-bar-label">Profesional</span>
+        <div class="perfil-bar-track"><div class="perfil-bar-fill" style="width:100%"></div></div>
+        <span class="perfil-bar-val">61%</span>
+      </div>
+      <div class="perfil-bar-item">
+        <span class="perfil-bar-label">Especialización</span>
+        <div class="perfil-bar-track"><div class="perfil-bar-fill" style="width:32%"></div></div>
+        <span class="perfil-bar-val">20%</span>
+      </div>
+      <div class="perfil-bar-item">
+        <span class="perfil-bar-label">Maestría</span>
+        <div class="perfil-bar-track"><div class="perfil-bar-fill" style="width:24%"></div></div>
+        <span class="perfil-bar-val">15%</span>
+      </div>
+      <div style="margin-top:14px">
+        <div class="big-pct" style="color:var(--marval-gold)">80%+</div>
+        <div class="big-pct-label">Tiene formación universitaria o posgrado</div>
+      </div>
+    </div>
+
+    <div class="perfil-card">
+      <div class="perfil-card-title">🏠 Vivienda Actual</div>
+      <div class="big-pct">30%</div>
+      <div class="big-pct-label">Ya tiene vivienda propia</div>
+      <div class="gold-divider" style="margin:12px 0"></div>
+      <div class="perfil-donut-row">
+        <div class="perfil-dot-item"><span class="dot teal"></span>Arriendo 47%</div>
+        <div class="perfil-dot-item"><span class="dot gold"></span>Propia 30%</div>
+        <div class="perfil-dot-item"><span class="dot orange"></span>Familiar 17%</div>
+      </div>
+      <div class="insight-box" style="margin-top:12px;font-size:11px">30% ya tiene vivienda propia → motivación de <strong>inversión</strong>, no solo primera vivienda.</div>
+    </div>
+
+    <div class="perfil-card">
+      <div class="perfil-card-title">👨‍👩‍👧 Estado Civil & Familia</div>
+      <div class="perfil-donut-row" style="margin-bottom:12px">
+        <div class="perfil-dot-item"><span class="dot teal"></span>Soltero 60%</div>
+        <div class="perfil-dot-item"><span class="dot gold"></span>Casado 36%</div>
+      </div>
+      <div class="gold-divider" style="margin:8px 0"></div>
+      <div class="perfil-bar-item" style="margin-top:10px">
+        <span class="perfil-bar-label">Sin hijos</span>
+        <div class="perfil-bar-track"><div class="perfil-bar-fill orange" style="width:100%"></div></div>
+        <span class="perfil-bar-val">59%</span>
+      </div>
+      <div class="perfil-bar-item">
+        <span class="perfil-bar-label">1–2 hijos</span>
+        <div class="perfil-bar-track"><div class="perfil-bar-fill orange" style="width:57%"></div></div>
+        <span class="perfil-bar-val">34%</span>
+      </div>
+      <div class="perfil-bar-item">
+        <span class="perfil-bar-label">3–4 hijos</span>
+        <div class="perfil-bar-track"><div class="perfil-bar-fill orange" style="width:12%"></div></div>
+        <span class="perfil-bar-val">7%</span>
+      </div>
+    </div>
+
+    <div class="perfil-card">
+      <div class="perfil-card-title">🏦 Ingresos Mensuales</div>
+      <div class="perfil-bar-item">
+        <span class="perfil-bar-label">4–6 SMLV</span>
+        <div class="perfil-bar-track"><div class="perfil-bar-fill gold" style="width:100%"></div></div>
+        <span class="perfil-bar-val">19</span>
+      </div>
+      <div class="perfil-bar-item">
+        <span class="perfil-bar-label">1–3 SMLV</span>
+        <div class="perfil-bar-track"><div class="perfil-bar-fill gold" style="width:42%"></div></div>
+        <span class="perfil-bar-val">8</span>
+      </div>
+      <div class="perfil-bar-item">
+        <span class="perfil-bar-label">7–9 SMLV</span>
+        <div class="perfil-bar-track"><div class="perfil-bar-fill gold" style="width:42%"></div></div>
+        <span class="perfil-bar-val">8</span>
+      </div>
+      <div class="perfil-bar-item">
+        <span class="perfil-bar-label">13–15 SMLV</span>
+        <div class="perfil-bar-track"><div class="perfil-bar-fill gold" style="width:21%"></div></div>
+        <span class="perfil-bar-val">4</span>
+      </div>
+      <div class="perfil-bar-item">
+        <span class="perfil-bar-label">10–12 SMLV</span>
+        <div class="perfil-bar-track"><div class="perfil-bar-fill gold" style="width:15%"></div></div>
+        <span class="perfil-bar-val">3</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- TIPO DE PROYECTO -->
+<div class="proyectos-section">
+  <div class="section-label">Proyectos & Tipo de Vivienda</div>
+  <div class="proyectos-row">
+    <div class="proyecto-card">
+      <div class="proyecto-icon">🏙️</div>
+      <div>
+        <div class="proyecto-name">Sky Tower</div>
+        <div class="proyecto-sub">Venta concretada</div>
+      </div>
+    </div>
+    <div class="proyecto-card">
+      <div class="proyecto-icon">🏔️</div>
+      <div>
+        <div class="proyecto-name">Cerros de Santa María</div>
+        <div class="proyecto-sub">Venta concretada</div>
+      </div>
+    </div>
+    <div class="tipo-vis-row">
+      <div class="tipo-badge">
+        <div class="tipo-val">47</div>
+        <div class="tipo-label">Oportunidades NVS</div>
+      </div>
+      <div class="tipo-badge vis">
+        <div class="tipo-val">19</div>
+        <div class="tipo-label">Oportunidades VIS</div>
+      </div>
+    </div>
+  </div>
+  <div class="insight-box" style="margin-top:16px">7 de cada 10 oportunidades apuntaron a proyectos NVS (No VIS), indicando que el perfil del cliente del evento tiene capacidad adquisitiva para vivienda de mayor valor, posiblemente apalancada en crédito hipotecario.</div>
+</div>
+
+<!-- COMPRADORES DEL EVENTO -->
+<div class="compradores-section">
+  <div class="section-label">Los 2 Compradores del Evento</div>
+  <div class="compradores-grid">
+    <div class="comprador-card">
+      <div class="comprador-num">Comprador #1</div>
+      <div class="comprador-row">
+        <div class="comprador-item"><span class="comprador-key">Edad</span><span class="comprador-val">60–70 años</span></div>
+        <div class="comprador-item"><span class="comprador-key">Ciudad</span><span class="comprador-val">Floridablanca</span></div>
+        <div class="comprador-item"><span class="comprador-key">Profesión</span><span class="comprador-val">Economista</span></div>
+        <div class="comprador-item"><span class="comprador-key">Ingresos</span><span class="comprador-val">4–6 SMLV</span></div>
+        <div class="comprador-item"><span class="comprador-key">Estado civil</span><span class="comprador-val">Casado</span></div>
+        <div class="comprador-item"><span class="comprador-key">Canal</span><span class="comprador-val">Página Web</span></div>
+      </div>
+    </div>
+    <div class="comprador-card">
+      <div class="comprador-num">Comprador #2</div>
+      <div class="comprador-row">
+        <div class="comprador-item"><span class="comprador-key">Edad</span><span class="comprador-val">40–50 años</span></div>
+        <div class="comprador-item"><span class="comprador-key">Ciudad</span><span class="comprador-val">Bogotá</span></div>
+        <div class="comprador-item"><span class="comprador-key">Profesión</span><span class="comprador-val">Administrador de Empresas</span></div>
+        <div class="comprador-item"><span class="comprador-key">Ingresos</span><span class="comprador-val">7–9 SMLV</span></div>
+        <div class="comprador-item"><span class="comprador-key">Estado civil</span><span class="comprador-val">Soltero</span></div>
+        <div class="comprador-item"><span class="comprador-key">Canal</span><span class="comprador-val">Página Web</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="insight-box" style="margin-top:16px">Ambos son hombres, profesionales del área económica/empresarial, captados vía web. Comprador de Bogotá confirma el alcance digital más allá del área metropolitana.</div>
+</div>
+
+<!-- OPORTUNIDADES ABIERTAS -->
+<div class="opps-section">
+  <div class="section-label">Pipeline Activo — Oportunidades Abiertas</div>
+  <div class="opps-highlight">
+    <div class="opps-big">46</div>
+    <div class="opps-desc">
+      Oportunidades actualmente abiertas, producto directo del evento.<br>
+      <strong>Perfil dominante: profesionales independientes, 30–40 años, en arriendo.</strong><br>
+      Preferencia de contacto: presencial (22) y WhatsApp (13). Destacable: 1 lead desde Miami.
+    </div>
+  </div>
+  <div class="opps-perfil-grid">
+    <div class="opp-mini">
+      <div class="opp-mini-val">71%</div>
+      <div class="opp-mini-label">Independientes</div>
+    </div>
+    <div class="opp-mini">
+      <div class="opp-mini-val">82%</div>
+      <div class="opp-mini-label">Profesionales</div>
+    </div>
+    <div class="opp-mini">
+      <div class="opp-mini-val">76%</div>
+      <div class="opp-mini-label">En arriendo</div>
+    </div>
+    <div class="opp-mini">
+      <div class="opp-mini-val">73%</div>
+      <div class="opp-mini-label">Sin hijos</div>
+    </div>
+  </div>
+</div>
+
+<!-- INSIGHTS ESTRATÉGICOS -->
+<div class="insights-section">
+  <div class="section-label">Recomendaciones para Futuros Lanzamientos</div>
+  <div class="insights-grid">
+    <div class="insight-card">
+      <div class="insight-icon">🎯</div>
+      <div class="insight-title">Perfil Objetivo Prioritario</div>
+      <div class="insight-text">Hombre profesional, <strong>30–50 años</strong>, empleado o independiente, ingresos entre <strong>4–9 SMLV</strong>, con formación universitaria. Motivado por inversión y/o primera vivienda. Soltero o casado sin hijos.</div>
+    </div>
+    <div class="insight-card teal">
+      <div class="insight-icon">🔁</div>
+      <div class="insight-title">Reactivar Base Histórica</div>
+      <div class="insight-text">Los clientes con historial Marval son <strong>6x más propensos</strong> a convertir que leads nuevos. Incluir estrategia de reactivación en todo futuro lanzamiento es esencial.</div>
+    </div>
+    <div class="insight-card teal">
+      <div class="insight-icon">🌐</div>
+      <div class="insight-title">Canal Digital Como Eje</div>
+      <div class="insight-text">La <strong>Página Web generó el 74% de leads</strong> y el 100% de las ventas. Invertir en pauta digital segmentada por perfil es la palanca más efectiva del mix.</div>
+    </div>
+    <div class="insight-card orange">
+      <div class="insight-icon">📱</div>
+      <div class="insight-title">Seguimiento: Presencial + WhatsApp</div>
+      <div class="insight-text">El <strong>presencial sigue siendo el canal preferido</strong> de contacto (55% en compradores). Sin embargo, WhatsApp es clave para las oportunidades abiertas. Combinar ambos en el follow-up aumenta la tasa de cierre.</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div>
+    <div class="footer-brand">MARVAL</div>
+    <div class="footer-sub">Constructora · Colombia</div>
+  </div>
+  <div class="footer-date">
+    Informe de Resultados<br>
+    Evento de Inversiones · Bucaramanga<br>
+    Sky Tower · Cerros de Santa María
+  </div>
+</div>
+
+</body>
+</html>
